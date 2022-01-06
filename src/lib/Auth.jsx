@@ -1,13 +1,10 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const { Consumer, Provider } = React.createContext();
 
-
-
 // HOC
 function withAuth(WrappedComponent) {
-
   return function (props) {
     return (
       <Consumer>
@@ -22,90 +19,111 @@ function withAuth(WrappedComponent) {
             signup={valueFromProvider.signup}
             logout={valueFromProvider.logout}
             me={valueFromProvider.me}
-
           />
         )}
       </Consumer>
-    )
-  }
+    );
+  };
 }
 
-class AuthProvider extends React.Component {
-  state = {
+function AuthProvider(props) {
+  const [state, setState] = useState({
     user: null,
     isLoggedIn: false,
     isLoading: true,
-    errorLogin:null
-  }
+    errorLogin: null,
+  });
+  useEffect(() => {
+    me();
+  }, []);
 
-  componentDidMount() {
-    // When app and AuthProvider load for the first time
-    // make a call to the server '/me' and check if user is authenitcated
-    this.me()
-  }
-
-  me = (cb) => {
-    axios.get(process.env.REACT_APP_API_URL + '/auth/me', { withCredentials: true })
-    .then((response) => {
-      const user = response.data;
-      this.setState({ isLoggedIn: true, isLoading: false, user }, ()=>{
-        if(cb){
-          cb()
+  const me = (cb) => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/auth/me", {
+        withCredentials: true,
+      })
+      .then((response) => {
+        const user = response.data;
+        this.setState({ isLoggedIn: true, isLoading: false, user }, () => {
+          if (cb) {
+            cb();
+          }
+        });
+      })
+      .catch(
+        (err) => setState({ isLoggedIn: false, isLoading: false, user: null }),
+        () => {
+          if (cb) {
+            cb();
+          }
         }
-      });
-    })
-    .catch((err) => this.setState({ isLoggedIn: false, isLoading: false, user: null }), ()=>{
-      if(cb){
-        cb()
-      }
-    });
-  }
+      );
+  };
 
-  login = (username, password) => {
-    axios.post(process.env.REACT_APP_API_URL + '/auth/login', { username, password }, { withCredentials: true })
+  const login = (username, password) => {
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/auth/login",
+        { username, password },
+        { withCredentials: true }
+      )
       .then((response) => {
         console.log(response);
         const user = response.data;
-        this.setState({ isLoggedIn: true, isLoading: false, user });
+        setState({ isLoggedIn: true, isLoading: false, user });
       })
       .catch((err) => {
         console.log(err);
-        this.setState({errorLogin:"Usuario no encontrado"})
+        setState({ errorLogin: "Usuario no encontrado" });
         setTimeout(() => {
-          
-          this.setState({errorLogin:null})
+          setState({ errorLogin: null });
         }, 4000);
       });
-  }
-  signup = (username,email, password) => {
-    axios.post(process.env.REACT_APP_API_URL + '/auth/signup', { username,email,password }, { withCredentials: true })
+  };
+  const signup = (username, email, password) => {
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/auth/signup",
+        { username, email, password },
+        { withCredentials: true }
+      )
       .then((response) => {
         const user = response.data;
-        this.setState({ isLoggedIn: true, isLoading: false, user });
+        setState({ isLoggedIn: true, isLoading: false, user });
       })
       .catch((err) => {
         console.log(err);
-       
       });
-  }
-  logout = () => {
-    axios.get(process.env.REACT_APP_API_URL + '/auth/logout', { withCredentials: true })
+  };
+  const logout = () => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/auth/logout", {
+        withCredentials: true,
+      })
       .then((response) => {
-        this.setState({ isLoggedIn: false, isLoading: false, user: null });
+        setState({ isLoggedIn: false, isLoading: false, user: null });
       })
       .catch((err) => console.log(err));
-  }
+  };
 
-  render() {
-    const { user, isLoggedIn, isLoading, errorLogin } = this.state;
-    const { login, signup, logout, me } = this;
+  const { user, isLoggedIn, isLoading, errorLogin } = state;
 
-    return (
-      <Provider value={{ user, isLoggedIn, isLoading, login, signup, logout, me, errorLogin }}>
-        {this.props.children}
-      </Provider>
-    )
-  }
+  return (
+    <Provider
+      value={{
+        user,
+        isLoggedIn,
+        isLoading,
+        login,
+        signup,
+        logout,
+        me,
+        errorLogin,
+      }}
+    >
+      {props.children}
+    </Provider>
+  );
 }
 
-export { withAuth, AuthProvider }
+export { withAuth, AuthProvider };
