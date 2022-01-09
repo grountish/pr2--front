@@ -33,7 +33,9 @@ button {
 
 .navigation {
     display: flex;
-    background-color: burlywood;
+    position: absolute;
+    top: 0;
+    background-color: rgb(212, 202, 187);
     flex-direction: row;
     align-items: center;
     justify-items: center;
@@ -41,8 +43,7 @@ button {
     font-family: Mantra;
     font-size: 1.2rem;
     height: 3rem;
-    width: 95%;
-    margin-left: 2.5%;
+    width: 100%;
     letter-spacing: 2px;
     text-decoration: none;
     border-bottom: 1px solid var(--main-color);
