@@ -10,9 +10,9 @@ const Navigation = ({ user, logout, isLoggedIn }) => {
   return (
     <div>
       {size.width > 500 || isActive ? (
-        <div className="navigation">
+        <div className="navigation bg-gray-100 shadow">
           <Link to={"/private"} id="xp-btn">
-            <h4 className="logo">p2</h4>
+            <h4 className="text-xl">Boilerplate</h4>
           </Link>
 
           {isLoggedIn ? (
