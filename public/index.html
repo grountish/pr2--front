@@ -1,23 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FBF5EC',
+            darkGray:"#E0E5E8",
+            darkMint:"#BDCCBE",
+            gray: {
+              50: '#F9F9F9',
+              100: '#F9FBFF',
+              200: '#D9E3EA',
+              300: '#C5D2DC',
+              400: '#9BA9B4',
+              500: '#707D86',
+              600: '#55595F',
+              650: '#41444C',
+              700: '#33363A',
+              800: '#25282C',
+              900: '#37352F',
+            },
+            purple: {
+              100: '#F4F4FF',
+              200: '#E2E1FF',
+              300: '#CBCCFF',
+              400: '#ABABFF',
+              500: '#8D8DFF',
+              600: '#5D5DFF',
+              700: '#4B4ACF',
+              800: '#38379C',
+              900: '#262668',
+            },
+            mento: {
+              100: '#749ce6',
+              200: '#5e8de2',
+              300: '#487ede',
+              400: '#326fda',
+              500: '#256CE2',
+              600: '#2158b8',
+              700: '#1d4da3',
+              800: '#19438d',
+              900: '#153977',
+            },
+            primaryGreen: {
+              100: '#10B981',
+            },
+            blue: {
+              100: '#256CE2',
+            },
+            primary: {
+              50: "#ffc2b1",
+              100: "#ffb5a1",
+              200: "#ffa991",
+              300: "#ff9d81",
+              400: "#ff9072",
+              500: "#ff8462",
+              600: "#e67758",
+              700: "#cc6a4e",
+              800: "#b35c45",
+              900: "#994f3b",
+            },
+            secondary: {
+              50: "#939da5",
+              100: "#7d8992",
+              200: "#687680",
+              300: "#52626e",
+              400: "#3d4f5c",
+              500: "#273b4a",
+              600: "#233543",
+              700: "#1f2f3b",
+              800: "#1b2934",
+              900: "#17232c",
+            },
 
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+            mint: {
+              50: "#eaf0ed",
+              100: "#e6ede9",
+              200: "#e1eae5",
+              300: "#dde7e2",
+              400: "#d9e3de",
+              500: "#d5e1db",
+              600: "#c0cac5",
+              700: "#667C71",
+              800: "#BDCCBE",
+              900: "#262626",
+            },
+            sahara: {
+              50: '#FFF7D9',
+              100: '#F2D982',
+              200: '#EECD5D',
+              300: '#EAC239',
+              400: '#E2B418',
+              500: '#BD9714',
+              600: '#8A6E0F',
+              700: '#584609',
+              800: '#251D04',
+            },
+            smaltBlue: {
+              50: '#E4F2F9',
+              100: '#B0C5CE',
+              200: '#97B2BE',
+              300: '#7E9FAF',
+              400: '#658D9F',
+              500: '#547787',
+              600: '#3E5964',
+              700: '#293A42',
+              800: '#131C1F',
+              900: '#000000',
+            },
+            fuchsiaPink: {
+              50: '#FCF8FC',
+              100: '#F6EAF5',
+              200: '#EACDE8',
+              300: '#DEB1DB',
+              400: '#D294CD',
+              500: '#C677C0',
+              600: '#B54FAE',
+              700: '#903C8A',
+              800: '#692C64',
+              900: '#411B3E',
+            },
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -25,12 +148,14 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>p1 page</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+
+  <title>p1 page</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
       You can add webfonts, meta tags, or analytics to this file.
@@ -39,8 +164,9 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
- 
 
 
-  </body>
+
+</body>
+
 </html>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import MainLayout from "./layouts/mainLayout";
+// import MainLayout from "./layouts/mainLayout";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 // import Community from "./pages/Community";
@@ -17,7 +17,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-       <MainLayout>
+       {/* <MainLayout> */}
         <Switch>
           <Route exact path="/" component={Home} />
           <AdminRoute exact path="/admin" component={AdminPage} />
@@ -28,7 +28,7 @@ function App() {
         <PrivateRoute exact path="/edit-profile" component={EditProfile} /> */}
           <PrivateRoute exact path="/private" component={Private} />
         </Switch>
-      </MainLayout>
+      {/* </MainLayout> */}
     </div>
   );
 }

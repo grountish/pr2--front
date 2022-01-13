@@ -1,17 +1,26 @@
 import React from "react";
+import HomeHow from "../components/Home-howitworks";
+import HomeJoin from "../components/HomeJoin";
+import HomeNewsletter from "../components/HomeNewsletter";
+import Footer from "../components/Footer";
+import FAQ from "../components/FAQ";
+import ElseKnow from "../components/ElseKnow";
+import Thrive from "../components/Thrive";
+import NextUp from "../components/NextUp";
 
-import { Link } from "react-router-dom";
-
-const Home =()=> {
-  
+const Home = () => {  
   return (
-    <div>
-      <h1>bienvenido</h1>
-      <Link to={"/private"} id="xp-btn">
-             <button>enter</button> 
-            </Link>
-    </div>
+    <>
+      <NextUp />
+      <Thrive />
+      <ElseKnow />
+      <FAQ />
+      <HomeNewsletter />
+      <HomeJoin />
+      <HomeHow />
+      <Footer />
+    </>
   );
-}
+};
 
 export default Home;
